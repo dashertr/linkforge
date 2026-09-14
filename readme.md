@@ -36,41 +36,37 @@ Install the following before running the project:
    cd linkforge
    ```
 
-2. Install the server dependencies:
+2. Install dependencies for all workspaces:
 
    ```bash
-   cd server
    npm install
    ```
 
-3. Install the client dependencies:
+3. Create the required environment files from the examples:
 
    ```bash
-   cd ../client
-   npm install
+   cp server/.env.example server/.env
+   cp client/.env.example client/.env
    ```
 
-4. Create the required environment files. For example, create `server/.env`:
+   Update local values as needed. Do not commit `.env` files.
 
-   ```env
-   PORT=5000
-   NODE_ENV=development
+4. Start both development servers from the repository root:
+
+   ```bash
+   npm run dev
    ```
 
-   If the React app needs the API URL, add the variable expected by your build tool to the client's environment file. For Vite, create `client/.env` with:
+   You can also start each app separately.
 
-   ```env
-   VITE_API_URL=http://localhost:5000
-   ```
-
-5. Start the Express server:
+5. Start the Express server only:
 
    ```bash
    cd server
    npm run dev
    ```
 
-6. In another terminal, start the React development server:
+6. In another terminal, start the React development server only:
 
    ```bash
    cd client
@@ -89,6 +85,8 @@ npm run build    # Create a production build
 npm start        # Start the production server
 npm test         # Run tests
 ```
+
+From the repository root, `npm test` runs all workspace test scripts that exist. See [docs/TESTING.md](docs/TESTING.md) for client and server testing guidance.
 
 ## Production
 
